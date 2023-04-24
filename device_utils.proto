@@ -439,6 +439,9 @@ message Browser {
       TICKET_REQUEST = 58;
       DNSSEC_CHAIN = 59;
       SEQUENCE_NUMBER_ENCRYPTION_ALGORITHMS = 60;
+      // src: boringssl
+      EXTENSION_APPLICATIONS_SETTINGS = 17513;
+      EXTENSION_RENEGOTIATION_INFO = 65281;
     }
 
     // - Elliptic curves: https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-8
@@ -494,10 +497,18 @@ message Browser {
       ARBITRARY_EXPLICIT_CHAR2_CURVES = 65282;
     }
 
+    // https://www.rfc-editor.org/rfc/rfc4492#section-5.1.2
+    enum EllipticCurvePointFormat {
+      UNCOMPRESSED = 0;
+      ANSI_X962_COMPRESSED_PRIME = 1;
+      ANSI_X962_COMPRESSED_CHAR2 = 2;
+    }
+
     ProtocolVersion version = 1;
     repeated CipherSuite cipherSuites = 2;
     repeated Extensions extensions = 3;
     repeated EllipticCurve ellipticCurves = 4;
+    repeated EllipticCurvePointFormat ellipticCurvePointFormats = 5;
   }
 
   string version = 1;
