@@ -1,6 +1,6 @@
 syntax = "proto3";
 package device_utils;
-option go_package = "github.com/BRUHItsABunny/go-device-utils";
+option go_package = "github.com/BRUHItsABunny/device-utils";
 
 message Browser {
   message TLSFingerprint {
