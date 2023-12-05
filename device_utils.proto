@@ -511,12 +511,128 @@ message Browser {
     repeated EllipticCurvePointFormat ellipticCurvePointFormats = 5;
   }
 
+  message BrowserCollection {
+    string hash = 1;
+    repeated string listData = 2;
+    map<string, string> mapData = 3;
+  }
+
+  message BrowserScreen {
+    message Orientation {
+      int32 angle = 1;
+      string type = 2;
+    }
+
+    int32 availWidth = 1;
+    int32 availHeight = 2;
+    int32 width = 3;
+    int32 height = 4;
+    int32 colorDepth = 5;
+    int32 pixelDepth = 6;
+    int32 availLeft = 7;
+    int32 availTop = 8;
+    bool isExtended = 9;
+    Orientation orientation = 10;
+  }
+
+  message WebGPU {
+    message Features {
+      int32 size = 1;
+    }
+
+    message Limits {
+      int32 maxTextureDimension1D = 1;
+      int32 maxTextureDimension2D = 2;
+      int32 maxTextureDimension3D = 3;
+      int32 maxTextureArrayLayers = 4;
+      int32 maxBindGroups = 5;
+      int32 maxBindingsPerBindGroup = 6;
+      int32 maxDynamicUniformBuffersPerPipelineLayout = 7;
+      int32 maxDynamicStorageBuffersPerPipelineLayout = 8;
+      int32 maxSampledTexturesPerShaderStage = 9;
+      int32 maxSamplersPerShaderStage = 10;
+      int32 maxStorageBuffersPerShaderStage = 11;
+      int32 maxStorageTexturesPerShaderStage = 12;
+      int32 maxUniformBuffersPerShaderStage = 13;
+      int32 maxUniformBufferBindingSize = 14;
+      int32 maxStorageBufferBindingSize = 15;
+      int32 minUniformBufferOffsetAlignment = 16;
+      int32 minStorageBufferOffsetAlignment = 17;
+      int32 maxVertexBuffers = 18;
+      int32 maxBufferSize = 19;
+      int32 maxVertexAttributes = 20;
+      int32 maxVertexBufferArrayStride = 21;
+      int32 maxInterStageShaderComponents = 22;
+      int32 maxInterStageShaderVariables = 23;
+      int32 maxColorAttachments = 24;
+      int32 maxColorAttachmentBytesPerSample = 25;
+      int32 maxComputeWorkgroupStorageSize = 26;
+      int32 maxComputeInvocationsPerWorkgroup = 27;
+      int32 maxComputeWorkgroupSizeX = 28;
+      int32 maxComputeWorkgroupSizeY = 29;
+      int32 maxComputeWorkgroupSizeZ = 30;
+      int32 maxComputeWorkgroupsPerDimension = 31;
+    }
+
+    Features features = 1;
+    Limits limits = 2;
+    bool isFallbackAdapter = 3;
+    string vendor = 4;
+    string architecture = 5;
+    string device = 6;
+    string description = 7;
+  }
+
+  message SpeechSynthesis {
+      string voiceURI = 1;
+      string name = 2;
+      string lang = 3;
+      bool localService = 4;
+      bool default = 5;
+  }
+
   string version = 1;
   string name = 2;
   string userAgent = 3;
   string brandHeader = 4;
 
   TLSFingerprint tlsFingerprint = 5;
+
+  // src: https://kaliiiiiiiiii.github.io/driverless-fp-collector/
+  string appCodeName = 20;
+  string appName = 21;
+  string appVersion = 22;
+  bool cookieEnabled = 23;
+  int32 deviceMemory = 24;
+  int32 doNotTrack = 25;
+  int32 hardwareConcurrency = 26;
+  string language = 27;
+  repeated string languages = 28;
+  int32 maxTouchPoints = 29;
+  bool pdfViewerEnabled = 30;
+  string platform = 31;
+  string product = 32;
+  string productSub = 33;
+  string vendor = 34;
+  string vendorSub = 35;
+  bool webdriver = 36;
+  double devicePixelRatio = 37;
+  int32 innerWidth = 38;
+  int32 innerHeight = 39;
+  int32 outerWidth = 40;
+  int32 outerHeight = 41;
+  BrowserScreen screen = 42;
+  WebGPU webGPU = 43;
+  repeated SpeechSynthesis speechSynthesis = 44;
+
+  BrowserCollection availableFonts = 100;
+  BrowserCollection navigator = 101;
+  BrowserCollection window = 102;
+  BrowserCollection document = 103;
+  BrowserCollection documentElement = 104;
+  BrowserCollection audioTypes = 105;
+  BrowserCollection videoTypes = 106;
+  BrowserCollection css = 107;
 }
 
 // Potentially common for more than just Android
