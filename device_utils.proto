@@ -503,6 +503,10 @@ message Browser {
         repeated Mode modes = 1;
       }
 
+      message KeyShareExtension {
+        repeated EllipticCurve keyShares = 1;
+      }
+
       message ExtensionApplicationsSettings {
         repeated string protocols = 1;
       }
@@ -541,6 +545,7 @@ message Browser {
       CompressCertificate compressCertificate = 27;
       SupportedVersions supportedVersions = 43;
       PSKKeyExchangeModes pskKeyExchangeModes = 45;
+      KeyShareExtension keyShareExtension = 51;
       ExtensionApplicationsSettings extensionApplicationsSettings = 17513;
       ExtensionEncryptedClientHello extensionEncryptedClientHello = 65037;
       ExtensionRenegotiationInfo extensionRenegotiationInfo = 65281;
