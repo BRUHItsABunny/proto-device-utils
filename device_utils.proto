@@ -441,7 +441,109 @@ message Browser {
       SEQUENCE_NUMBER_ENCRYPTION_ALGORITHMS = 60;
       // src: boringssl
       EXTENSION_APPLICATIONS_SETTINGS = 17513;
+      EXTENSION_ENCRYPTED_CLIENT_HELLO = 65037;
       EXTENSION_RENEGOTIATION_INFO = 65281;
+    }
+
+    enum RenegotiationSupport {
+      RENEGOTIATE_NEVER = 0;
+      RENEGOTIATE_ONCE_AS_CLIENT = 1;
+      RENEGOTIATE_FREELY_AS_CLIENT = 2;
+    }
+
+    enum SignatureScheme {
+      NO_SIGNATURE = 0;
+      RSA_PKCS1_SHA256 = 0x0401;
+      RSA_PKCS1_SHA384 = 0x0501;
+      RSA_PKCS1_SHA512 = 0x0601;
+      ECDSA_SECP256R1_SHA256 = 0x0403;
+      ECDSA_SECP384R1_SHA384 = 0x0503;
+      ECDSA_SECP521R1_SHA512 = 0x0603;
+      RSA_PSS_RSAE_SHA256 = 0x0804;
+      RSA_PSS_RSAE_SHA384 = 0x0805;
+      RSA_PSS_RSAE_SHA512 = 0x0806;
+      ED25519 = 0x0807;
+      ED448 = 0x0808;
+      RSA_PSS_PSS_SHA256 = 0x0809;
+      RSA_PSS_PSS_SHA384 = 0x080a;
+      RSA_PSS_PSS_SHA512 = 0x080b;
+      RSA_PKCS1_SHA1 = 0x0201;
+      ECDSA_SHA1 = 0x0203;
+    }
+
+    message Extension {
+      message SignatureAlgorithms {
+        repeated SignatureScheme supportedSignatureAlgorithms = 1;
+      }
+
+      message ApplicationLayerProtocolNegotiation {
+        repeated string protocols = 1;
+      }
+
+      message CompressCertificate {
+        enum CertificateCompression {
+          NO_COMPRESSION = 0;
+          ZLIB = 1;
+          BROTLI = 2;
+          ZSTD = 3;
+        }
+
+        repeated CertificateCompression algorithms = 1;
+      }
+
+      message SupportedVersions {
+        repeated ProtocolVersion versions = 1;
+      }
+
+      message PSKKeyExchangeModes {
+        enum Mode {
+          PLAIN = 0;
+          DHE = 1;
+        }
+        repeated Mode modes = 1;
+      }
+
+      message ExtensionApplicationsSettings {
+        repeated string protocols = 1;
+      }
+
+      message ExtensionRenegotiationInfo {
+        RenegotiationSupport renegotiationSupport = 1;
+      }
+
+      message ExtensionEncryptedClientHello {
+        enum HKDF {
+          HKDF_RESERVED = 0;
+          HKDF_SHA256 = 1;
+          HKDF_SHA384 = 2;
+          HKDF_SHA512 = 3;
+        }
+
+        enum HPKEAEAD {
+          HPKEAEAD_RESERVED = 0;
+          HPKEAEAD_AES_128_GCM = 1;
+          HPKEAEAD_AES_256_GCM = 2;
+          HPKEAEAD_CHACHA20POLY1305 = 3;
+        }
+
+        message HPKESymmetricCipherSuite {
+          HKDF kdfId = 1;
+          HPKEAEAD aeadId = 2;
+        }
+
+        repeated HPKESymmetricCipherSuite candidateCipherSuites = 1;
+        repeated uint32 candidatePayloadLens = 2;
+      }
+
+      Extensions extensionId = 1;
+      SignatureAlgorithms signatureAlgorithms = 13;
+      ApplicationLayerProtocolNegotiation applicationLayerProtocolNegotiation = 16;
+      CompressCertificate compressCertificate = 27;
+      SupportedVersions supportedVersions = 43;
+      PSKKeyExchangeModes pskKeyExchangeModes = 45;
+      ExtensionApplicationsSettings extensionApplicationsSettings = 17513;
+      ExtensionEncryptedClientHello extensionEncryptedClientHello = 65037;
+      ExtensionRenegotiationInfo extensionRenegotiationInfo = 65281;
     }
 
     // - Elliptic curves: https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-8
