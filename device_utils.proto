@@ -480,6 +480,10 @@ message Browser {
         repeated string protocols = 1;
       }
 
+      message RecordSizeLimit {
+        uint32 limit = 1;
+      }
+
       message CompressCertificate {
         enum CertificateCompression {
           NO_COMPRESSION = 0;
@@ -504,7 +508,11 @@ message Browser {
       }
 
       message KeyShareExtension {
-        repeated EllipticCurve keyShares = 1;
+        message KeyShare {
+          EllipticCurve group = 1;
+          bytes data = 2;
+        }
+        repeated KeyShare keyShares = 1;
       }
 
       message ExtensionApplicationsSettings {
@@ -543,6 +551,7 @@ message Browser {
       SignatureAlgorithms signatureAlgorithms = 13;
       ApplicationLayerProtocolNegotiation applicationLayerProtocolNegotiation = 16;
       CompressCertificate compressCertificate = 27;
+      RecordSizeLimit recordSizeLimit = 28;
       SupportedVersions supportedVersions = 43;
       PSKKeyExchangeModes pskKeyExchangeModes = 45;
       KeyShareExtension keyShareExtension = 51;
