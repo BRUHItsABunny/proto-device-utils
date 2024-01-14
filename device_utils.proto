@@ -511,6 +511,33 @@ message Browser {
     repeated EllipticCurvePointFormat ellipticCurvePointFormats = 5;
   }
 
+  message HTTPFingerprint {
+    message PriorityFrameOpts {
+      int64 streamId = 1;
+      int64 streamDep = 2;
+      bool exclusive = 3;
+      int32 weight = 4;
+    }
+
+    message SettingsFrameOpts {
+      int64 headerTableSize = 1;
+      int64 enablePush = 2;
+      int64 maxConcurrentStreams = 3;
+      int64 initialWindowSize = 4;
+      int64 maxFrameSize = 5;
+      int64 maxHeaderListSize = 6;
+    }
+
+    // HTTP 1
+    repeated string headerOrder = 1;
+    // HTTP 2
+    repeated string pseudoHeaderOrder = 2;
+    SettingsFrameOpts settingsFrame = 3;
+    int64 windowUpdateIncrement = 4;
+    repeated PriorityFrameOpts priorityFrames = 5;
+    PriorityFrameOpts headerFramePriority = 6;
+  }
+
   message BrowserCollection {
     string hash = 1;
     repeated string listData = 2;
@@ -597,6 +624,7 @@ message Browser {
   string brandHeader = 4;
 
   TLSFingerprint tlsFingerprint = 5;
+  HTTPFingerprint httpFingerprint = 6;
 
   // src: https://kaliiiiiiiiii.github.io/driverless-fp-collector/
   string appCodeName = 20;
