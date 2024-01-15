@@ -629,7 +629,7 @@ message Browser {
     repeated Extension extensions = 3;
     repeated EllipticCurve ellipticCurves = 4;
     repeated EllipticCurvePointFormat ellipticCurvePointFormats = 5;
-    repeated ExtensionData extensionData = 6;
+    map<uint32, ExtensionData> extensionData = 6;
   }
 
   message HTTPFingerprint {
