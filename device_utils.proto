@@ -379,7 +379,7 @@ message Browser {
     }
 
     // - TLS extensions: https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml
-    enum Extensions {
+    enum Extension {
       SERVER_NAME = 0;
       MAX_FRAGMENT_LENGTH = 1;
       CLIENT_CERTIFICATE_URL = 2;
@@ -471,7 +471,7 @@ message Browser {
       ECDSA_SHA1 = 0x0203;
     }
 
-    message Extension {
+    message ExtensionData {
       message SignatureAlgorithms {
         repeated SignatureScheme supportedSignatureAlgorithms = 1;
       }
@@ -547,7 +547,7 @@ message Browser {
         repeated uint32 candidatePayloadLens = 2;
       }
 
-      Extensions extensionId = 1;
+      Extension extensionId = 1;
       SignatureAlgorithms signatureAlgorithms = 13;
       ApplicationLayerProtocolNegotiation applicationLayerProtocolNegotiation = 16;
       CompressCertificate compressCertificate = 27;
@@ -626,9 +626,10 @@ message Browser {
 
     ProtocolVersion version = 1;
     repeated CipherSuite cipherSuites = 2;
-    repeated Extensions extensions = 3;
+    repeated Extension extensions = 3;
     repeated EllipticCurve ellipticCurves = 4;
     repeated EllipticCurvePointFormat ellipticCurvePointFormats = 5;
+    map<uint32, ExtensionData> extensionData = 6;
   }
 
   message HTTPFingerprint {
