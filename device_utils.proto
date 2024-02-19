@@ -659,10 +659,21 @@ message Browser {
     PriorityFrameOpts headerFramePriority = 6;
   }
 
+  message GLCapability {
+    repeated bool boolValue = 1;
+    repeated int32 intValue = 2;
+    repeated double floatValue = 3;
+    repeated string stringValue = 4;
+    int32 enumValue = 10;
+    int32 enumName = 11;
+  }
+
   message BrowserCollection {
-    string hash = 1;
-    repeated string listData = 2;
-    map<string, string> mapData = 3;
+    int64 id = 1;
+    string hash = 2;
+    repeated string listData = 3;
+    map<string, string> mapData = 4;
+    map<string, GLCapability> glData = 5;
   }
 
   message BrowserScreen {
@@ -782,6 +793,9 @@ message Browser {
   BrowserCollection audioTypes = 105;
   BrowserCollection videoTypes = 106;
   BrowserCollection css = 107;
+  BrowserCollection gl = 108;
+  BrowserCollection gl2 = 109;
+  BrowserCollection glExperimental = 110;
 }
 
 // Potentially common for more than just Android
