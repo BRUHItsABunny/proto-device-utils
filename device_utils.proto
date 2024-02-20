@@ -746,6 +746,25 @@ message Browser {
     repeated Brand fullVersionList = 9;
   }
 
+  message WebRTC {
+    message Codec {
+      int32 channels = 1;
+      int64 clockRate = 2;
+      string mimeType = 3;
+      string sdpFmtLine = 4;
+    }
+    message HeaderExtension {
+      string direction = 1;
+      string uri = 2;
+    }
+    message CodecInformation {
+      repeated Codec codecs = 1;
+      repeated HeaderExtension headerExtensions = 2;
+    }
+    CodecInformation video = 1;
+    CodecInformation audio = 2;
+  }
+
   string version = 1;
   string name = 2;
   string userAgent = 3;
@@ -782,6 +801,7 @@ message Browser {
   repeated SpeechSynthesis speechSynthesis = 44;
   repeated Plugin plugins = 45;
   HighEntropyValues highEntropyValues = 46;
+  WebRTC webRTC = 47;
 
   BrowserCollection availableFonts = 100;
   BrowserCollection navigator = 101;
