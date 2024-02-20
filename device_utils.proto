@@ -716,6 +716,18 @@ message Browser {
       bool default = 5;
   }
 
+  message Plugin {
+    message MIMEType {
+      string type = 1;
+      string suffixes = 2;
+      string description = 3;
+    }
+
+    string name = 1;
+    string fileName = 2;
+    string description = 3;
+  }
+
   string version = 1;
   string name = 2;
   string userAgent = 3;
@@ -750,6 +762,7 @@ message Browser {
   BrowserScreen screen = 42;
   WebGPU webGPU = 43;
   repeated SpeechSynthesis speechSynthesis = 44;
+  repeated Plugin plugins = 45;
 
   BrowserCollection availableFonts = 100;
   BrowserCollection navigator = 101;
