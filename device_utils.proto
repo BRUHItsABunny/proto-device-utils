@@ -673,7 +673,7 @@ message Browser {
     string hash = 2;
     repeated string listData = 3;
     map<string, string> mapData = 4;
-    map<string, GLCapability> glData = 5;
+    map<string, GLCapability> glCapabilities = 5;
   }
 
   message BrowserScreen {
