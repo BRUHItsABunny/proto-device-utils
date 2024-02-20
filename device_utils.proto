@@ -729,6 +729,23 @@ message Browser {
     map<string, MIMEType> supportedMIMETypes = 4;
   }
 
+  message HighEntropyValues {
+    message Brand {
+      string brand = 1;
+      string version = 2;
+    }
+
+    string architecture = 1;
+    string bitness = 2;
+    bool mobile = 3;
+    string model = 4;
+    string platform = 5;
+    string platformVersion = 6;
+    string usFullVersion = 7;
+    repeated Brand brands = 8;
+    repeated Brand fullVersionList = 9;
+  }
+
   string version = 1;
   string name = 2;
   string userAgent = 3;
@@ -764,6 +781,7 @@ message Browser {
   WebGPU webGPU = 43;
   repeated SpeechSynthesis speechSynthesis = 44;
   repeated Plugin plugins = 45;
+  HighEntropyValues highEntropyValues = 46;
 
   BrowserCollection availableFonts = 100;
   BrowserCollection navigator = 101;
