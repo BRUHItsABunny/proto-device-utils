@@ -661,10 +661,10 @@ message Browser {
 
   message GLCapability {
     repeated bool boolValue = 1;
-    repeated int32 intValue = 2;
+    repeated int64 intValue = 2;
     repeated double floatValue = 3;
     repeated string stringValue = 4;
-    int32 enumValue = 10;
+    int64 enumValue = 10;
     string enumName = 11;
   }
 
@@ -696,41 +696,41 @@ message Browser {
 
   message WebGPU {
     message Features {
-      int32 size = 1;
+      int64 size = 1;
     }
 
     message Limits {
-      int32 maxTextureDimension1D = 1;
-      int32 maxTextureDimension2D = 2;
-      int32 maxTextureDimension3D = 3;
-      int32 maxTextureArrayLayers = 4;
-      int32 maxBindGroups = 5;
-      int32 maxBindingsPerBindGroup = 6;
-      int32 maxDynamicUniformBuffersPerPipelineLayout = 7;
-      int32 maxDynamicStorageBuffersPerPipelineLayout = 8;
-      int32 maxSampledTexturesPerShaderStage = 9;
-      int32 maxSamplersPerShaderStage = 10;
-      int32 maxStorageBuffersPerShaderStage = 11;
-      int32 maxStorageTexturesPerShaderStage = 12;
-      int32 maxUniformBuffersPerShaderStage = 13;
-      int32 maxUniformBufferBindingSize = 14;
-      int32 maxStorageBufferBindingSize = 15;
-      int32 minUniformBufferOffsetAlignment = 16;
-      int32 minStorageBufferOffsetAlignment = 17;
-      int32 maxVertexBuffers = 18;
-      int32 maxBufferSize = 19;
-      int32 maxVertexAttributes = 20;
-      int32 maxVertexBufferArrayStride = 21;
-      int32 maxInterStageShaderComponents = 22;
-      int32 maxInterStageShaderVariables = 23;
-      int32 maxColorAttachments = 24;
-      int32 maxColorAttachmentBytesPerSample = 25;
-      int32 maxComputeWorkgroupStorageSize = 26;
-      int32 maxComputeInvocationsPerWorkgroup = 27;
-      int32 maxComputeWorkgroupSizeX = 28;
-      int32 maxComputeWorkgroupSizeY = 29;
-      int32 maxComputeWorkgroupSizeZ = 30;
-      int32 maxComputeWorkgroupsPerDimension = 31;
+      int64 maxTextureDimension1D = 1;
+      int64 maxTextureDimension2D = 2;
+      int64 maxTextureDimension3D = 3;
+      int64 maxTextureArrayLayers = 4;
+      int64 maxBindGroups = 5;
+      int64 maxBindingsPerBindGroup = 6;
+      int64 maxDynamicUniformBuffersPerPipelineLayout = 7;
+      int64 maxDynamicStorageBuffersPerPipelineLayout = 8;
+      int64 maxSampledTexturesPerShaderStage = 9;
+      int64 maxSamplersPerShaderStage = 10;
+      int64 maxStorageBuffersPerShaderStage = 11;
+      int64 maxStorageTexturesPerShaderStage = 12;
+      int64 maxUniformBuffersPerShaderStage = 13;
+      int64 maxUniformBufferBindingSize = 14;
+      int64 maxStorageBufferBindingSize = 15;
+      int64 minUniformBufferOffsetAlignment = 16;
+      int64 minStorageBufferOffsetAlignment = 17;
+      int64 maxVertexBuffers = 18;
+      int64 maxBufferSize = 19;
+      int64 maxVertexAttributes = 20;
+      int64 maxVertexBufferArrayStride = 21;
+      int64 maxInterStageShaderComponents = 22;
+      int64 maxInterStageShaderVariables = 23;
+      int64 maxColorAttachments = 24;
+      int64 maxColorAttachmentBytesPerSample = 25;
+      int64 maxComputeWorkgroupStorageSize = 26;
+      int64 maxComputeInvocationsPerWorkgroup = 27;
+      int64 maxComputeWorkgroupSizeX = 28;
+      int64 maxComputeWorkgroupSizeY = 29;
+      int64 maxComputeWorkgroupSizeZ = 30;
+      int64 maxComputeWorkgroupsPerDimension = 31;
     }
 
     Features features = 1;
@@ -763,7 +763,7 @@ message Browser {
   string appName = 21;
   string appVersion = 22;
   bool cookieEnabled = 23;
-  int32 deviceMemory = 24;
+  int64 deviceMemory = 24;
   int32 doNotTrack = 25;
   int32 hardwareConcurrency = 26;
   string language = 27;
