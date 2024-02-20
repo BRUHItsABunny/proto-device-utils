@@ -699,42 +699,8 @@ message Browser {
       int64 size = 1;
     }
 
-    message Limits {
-      int64 maxTextureDimension1D = 1;
-      int64 maxTextureDimension2D = 2;
-      int64 maxTextureDimension3D = 3;
-      int64 maxTextureArrayLayers = 4;
-      int64 maxBindGroups = 5;
-      int64 maxBindingsPerBindGroup = 6;
-      int64 maxDynamicUniformBuffersPerPipelineLayout = 7;
-      int64 maxDynamicStorageBuffersPerPipelineLayout = 8;
-      int64 maxSampledTexturesPerShaderStage = 9;
-      int64 maxSamplersPerShaderStage = 10;
-      int64 maxStorageBuffersPerShaderStage = 11;
-      int64 maxStorageTexturesPerShaderStage = 12;
-      int64 maxUniformBuffersPerShaderStage = 13;
-      int64 maxUniformBufferBindingSize = 14;
-      int64 maxStorageBufferBindingSize = 15;
-      int64 minUniformBufferOffsetAlignment = 16;
-      int64 minStorageBufferOffsetAlignment = 17;
-      int64 maxVertexBuffers = 18;
-      int64 maxBufferSize = 19;
-      int64 maxVertexAttributes = 20;
-      int64 maxVertexBufferArrayStride = 21;
-      int64 maxInterStageShaderComponents = 22;
-      int64 maxInterStageShaderVariables = 23;
-      int64 maxColorAttachments = 24;
-      int64 maxColorAttachmentBytesPerSample = 25;
-      int64 maxComputeWorkgroupStorageSize = 26;
-      int64 maxComputeInvocationsPerWorkgroup = 27;
-      int64 maxComputeWorkgroupSizeX = 28;
-      int64 maxComputeWorkgroupSizeY = 29;
-      int64 maxComputeWorkgroupSizeZ = 30;
-      int64 maxComputeWorkgroupsPerDimension = 31;
-    }
-
     Features features = 1;
-    Limits limits = 2;
+    map<string, int64> limits = 2;
     bool isFallbackAdapter = 3;
     string vendor = 4;
     string architecture = 5;
