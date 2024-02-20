@@ -665,7 +665,7 @@ message Browser {
     repeated double floatValue = 3;
     repeated string stringValue = 4;
     int32 enumValue = 10;
-    int32 enumName = 11;
+    string enumName = 11;
   }
 
   message BrowserCollection {
