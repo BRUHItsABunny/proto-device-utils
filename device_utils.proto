@@ -769,9 +769,11 @@ message Browser {
   string name = 2;
   string userAgent = 3;
   string brandHeader = 4;
+  string platformHeader = 5;
+  string mobileHeader = 6;
 
-  TLSFingerprint tlsFingerprint = 5;
-  HTTPFingerprint httpFingerprint = 6;
+  TLSFingerprint tlsFingerprint = 10;
+  HTTPFingerprint httpFingerprint = 11;
 
   // src: https://kaliiiiiiiiii.github.io/driverless-fp-collector/
   string appCodeName = 20;
